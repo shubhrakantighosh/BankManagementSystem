@@ -6,5 +6,4 @@ public interface BankManagementDao {
 
     public String createBankAccount(BankAccount bankAccount);
 
-
 }

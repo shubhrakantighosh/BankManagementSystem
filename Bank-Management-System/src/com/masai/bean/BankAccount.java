@@ -3,13 +3,16 @@ package com.masai.bean;
 public class BankAccount {
 
     private int customerID;
-    private String name;
-    private int accountBalance;
-    private String ifscCode;
+    private String customerName ;
+    private int customerAccountBalance;
+    private String customerAddress ;
+    private String customerMobileNumber ;
+    private String customerEmailID ;
+    private String customerDebitCardNo;
+    private int customerATMPin;
+    private String branchifscCode;
     private String branchName;
-    private String address;
-    private String mobileNumber;
-    private String emailID;
+
 
     public int getCustomerID() {
         return customerID;
@@ -19,28 +22,68 @@ public class BankAccount {
         this.customerID = customerID;
     }
 
-    public String getName() {
-        return name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public int getAccountBalance() {
-        return accountBalance;
+    public int getCustomerAccountBalance() {
+        return customerAccountBalance;
     }
 
-    public void setAccountBalance(int accountBalance) {
-        this.accountBalance = accountBalance;
+    public void setCustomerAccountBalance(int customerAccountBalance) {
+        this.customerAccountBalance = customerAccountBalance;
     }
 
-    public String getIfscCode() {
-        return ifscCode;
+    public String getCustomerAddress() {
+        return customerAddress;
     }
 
-    public void setIfscCode(String ifscCode) {
-        this.ifscCode = ifscCode;
+    public void setCustomerAddress(String customerAddress) {
+        this.customerAddress = customerAddress;
+    }
+
+    public String getCustomerMobileNumber() {
+        return customerMobileNumber;
+    }
+
+    public void setCustomerMobileNumber(String customerMobileNumber) {
+        this.customerMobileNumber = customerMobileNumber;
+    }
+
+    public String getCustomerEmailID() {
+        return customerEmailID;
+    }
+
+    public void setCustomerEmailID(String customerEmailID) {
+        this.customerEmailID = customerEmailID;
+    }
+
+    public String getCustomerDebitCardNo() {
+        return customerDebitCardNo;
+    }
+
+    public void setCustomerDebitCardNo(String customerDebitCardNo) {
+        this.customerDebitCardNo = customerDebitCardNo;
+    }
+
+    public int getCustomerATMPin() {
+        return customerATMPin;
+    }
+
+    public void setCustomerATMPin(int customerATMPin) {
+        this.customerATMPin = customerATMPin;
+    }
+
+    public String getBranchifscCode() {
+        return branchifscCode;
+    }
+
+    public void setBranchifscCode(String branchifscCode) {
+        this.branchifscCode = branchifscCode;
     }
 
     public String getBranchName() {
@@ -51,55 +94,36 @@ public class BankAccount {
         this.branchName = branchName;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getMobileNumber() {
-        return mobileNumber;
-    }
-
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
-    }
-
-    public String getEmailID() {
-        return emailID;
-    }
-
-    public void setEmailID(String emailID) {
-        this.emailID = emailID;
-    }
-
-    public BankAccount(int customerID, String name, int accountBalance, String ifscCode, String branchName, String address, String mobileNumber, String emailID) {
+    public BankAccount(int customerID, String customerName, int customerAccountBalance, String customerAddress, String customerMobileNumber, String customerEmailID, String customerDebitCardNo, int customerATMPin, String branchifscCode, String branchName) {
         this.customerID = customerID;
-        this.name = name;
-        this.accountBalance = accountBalance;
-        this.ifscCode = ifscCode;
+        this.customerName = customerName;
+        this.customerAccountBalance = customerAccountBalance;
+        this.customerAddress = customerAddress;
+        this.customerMobileNumber = customerMobileNumber;
+        this.customerEmailID = customerEmailID;
+        this.customerDebitCardNo = customerDebitCardNo;
+        this.customerATMPin = customerATMPin;
+        this.branchifscCode = branchifscCode;
         this.branchName = branchName;
-        this.address = address;
-        this.mobileNumber = mobileNumber;
-        this.emailID = emailID;
     }
 
     @Override
     public String toString() {
         return "BankAccount{" +
                 "customerID=" + customerID +
-                ", name='" + name + '\'' +
-                ", accountBalance=" + accountBalance +
-                ", ifscCode='" + ifscCode + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", customerAccountBalance=" + customerAccountBalance +
+                ", customerAddress='" + customerAddress + '\'' +
+                ", customerMobileNumber='" + customerMobileNumber + '\'' +
+                ", customerEmailID='" + customerEmailID + '\'' +
+                ", customerDebitCardNo='" + customerDebitCardNo + '\'' +
+                ", customerATMPin=" + customerATMPin +
+                ", branchifscCode='" + branchifscCode + '\'' +
                 ", branchName='" + branchName + '\'' +
-                ", address='" + address + '\'' +
-                ", mobileNumber='" + mobileNumber + '\'' +
-                ", emailID='" + emailID + '\'' +
                 '}';
     }
 
     public BankAccount() {
+
     }
 }

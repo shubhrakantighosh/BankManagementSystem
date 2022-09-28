@@ -13,22 +13,26 @@ public class CreateBankAccount {
             Scanner scanner=new Scanner(System.in);
             System.out.println("Enter Your Customer ID : ");
             int customerID=scanner.nextInt();
-            System.out.println("Enter Your Name : ");
-            String name=scanner.next();
-            System.out.println("Enter Amount");
-            int accountBlance=scanner.nextInt();
-            System.out.println("Enter IFSC Code : ");
-            String ifscCode=scanner.next();
+            System.out.println("Enter Your Customer Name  : ");
+            String customerName=scanner.next();
+            System.out.println("Enter Customer Account Balance");
+            int customerAccountBalance=scanner.nextInt();
+            System.out.println("Enter Customer Address  : ");
+            String customerAddress=scanner.next();
+            System.out.println("Enter Customer Mobile Number : ");
+            String customerMobileNumber=scanner.next();
+            System.out.println("Enter Customer EmailID  : ");
+            String customerEmailID=scanner.next();
+            System.out.println("Enter Customer Debit Card No : ");
+            String customerDebitCardNo=scanner.next();
+            System.out.println("Enter Customer ATM Pin : ");
+            int customerATMPin=scanner.nextInt();
+            System.out.println("Enter Branch ifsc Code  : ");
+            String branchifscCode=scanner.next();
             System.out.println("Enter Branch Name : ");
             String branchName=scanner.next();
-            System.out.println("Enter Your Address : ");
-            String address=scanner.next();
-            System.out.println("Enter Your Mobile Number : ");
-            String mobileNumber=scanner.next();
-            System.out.println("Enter Your Email ID : ");
-            String emailID=scanner.next();
 
-            BankAccount bankAccount=new BankAccount(customerID,name,accountBlance,ifscCode,branchName,address,mobileNumber,emailID);
+            BankAccount bankAccount=new BankAccount(customerID,customerName,customerAccountBalance,customerAddress,customerMobileNumber,customerEmailID,customerDebitCardNo,customerATMPin,branchifscCode,branchName);
 
             String message=new BankManagementDaoImpl().createBankAccount(bankAccount);
 

@@ -15,16 +15,18 @@ public class BankManagementDaoImpl implements BankManagementDao{
 
         try (Connection connection=new DBUtil().provideConnection()) {
 
-            PreparedStatement preparedStatement =connection.prepareStatement("insert into BankManageSystem values(?,?,?,?,?,?,?,?)");
+            PreparedStatement preparedStatement =connection.prepareStatement("insert into Bankmanagementsystem values(?,?,?,?,?,?,?,?,?,?);");
 
             preparedStatement.setInt(1,bankAccount.getCustomerID());
-            preparedStatement.setString(2,bankAccount.getName());
-            preparedStatement.setInt(3,bankAccount.getAccountBalance());
-            preparedStatement.setString(4,bankAccount.getIfscCode());
-            preparedStatement.setString(5,bankAccount.getBranchName());
-            preparedStatement.setString(6,bankAccount.getAddress());
-            preparedStatement.setString(7,bankAccount.getMobileNumber());
-            preparedStatement.setString(8,bankAccount.getEmailID());
+            preparedStatement.setString(2,bankAccount.getCustomerName());
+            preparedStatement.setInt(3,bankAccount.getCustomerAccountBalance());
+            preparedStatement.setString(4,bankAccount.getCustomerAddress());
+            preparedStatement.setString(5,bankAccount.getCustomerMobileNumber());
+            preparedStatement.setString(6,bankAccount.getCustomerEmailID());
+            preparedStatement.setString(7,bankAccount.getCustomerDebitCardNo());
+            preparedStatement.setInt(8,bankAccount.getCustomerATMPin());
+            preparedStatement.setString(9,bankAccount.getBranchifscCode());
+            preparedStatement.setString(10,bankAccount.getBranchName());
 
             if (preparedStatement.executeUpdate()>0)
                 message="Account create successfully";
