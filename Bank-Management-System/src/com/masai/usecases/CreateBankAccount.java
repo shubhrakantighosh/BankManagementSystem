@@ -3,6 +3,7 @@ package com.masai.usecases;
 import com.masai.bean.BankAccount;
 import com.masai.dao.BankManagementDaoImpl;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class CreateBankAccount {
@@ -14,7 +15,8 @@ public class CreateBankAccount {
             System.out.println("Enter Your Customer ID : ");
             int customerID=scanner.nextInt();
             System.out.println("Enter Your Customer Name  : ");
-            String customerName=scanner.next();
+            scanner.next();
+            String customerName=scanner.nextLine();
             System.out.println("Enter Customer Account Balance");
             int customerAccountBalance=scanner.nextInt();
             System.out.println("Enter Customer Address  : ");

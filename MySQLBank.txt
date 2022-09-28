@@ -11,13 +11,13 @@ branchifscCode varchar(6) Not Null,
 branchName varchar(10) Not Null  
 );
 
-customerID 
-customerName 
-customerAccountBalance
-customerAddress 
-customerMobileNumber 
-customerEmailID 
-customerDebitCardNo 
-customerATMPin 
-branchifscCode 
-branchName
+( 1 ) customerID 
+( 2 ) customerName 
+( 3 ) customerAccountBalance
+( 4 ) customerAddress 
+( 5 ) customerMobileNumber 
+( 6 ) customerEmailID 
+( 7 ) customerDebitCardNo 
+( 8 ) customerATMPin 
+( 9 ) branchifscCode 
+( 10 ) branchName
