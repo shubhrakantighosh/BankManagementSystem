@@ -40,7 +40,7 @@ public class BankManagementDaoImpl implements BankManagementDao{
         return message;
     }
     @Override
-    public BankAccount getAccountInformationByCustomerAccountNumber(int userCustomerAccountNumber) throws BankAccountException {
+    public BankAccount getAccountInformation(int userCustomerAccountNumber) throws BankAccountException {
 
         BankAccount bankAccount=null;
 
@@ -66,7 +66,7 @@ public class BankManagementDaoImpl implements BankManagementDao{
                 bankAccount=new BankAccount(customerAccountNumber,customerName,customerAccountBalance,customerAddress,customerMobileNumber,customerEmailID,customerDebitCardNo,customerATMPin,branchifscCode,branchName);
 
             }else
-                throw new BankAccountException("Doesn't Exit Customer Or Wrong Customer Account Number : "+userCustomerAccountNumber);
+                throw new BankAccountException("Doesn't Exit Customer Or Wrong Customer Account Number : "+userCustomerAccountNumber+" .");
 
         }catch (SQLException sqlException){
             throw new BankAccountException(sqlException.getMessage());
@@ -74,5 +74,91 @@ public class BankManagementDaoImpl implements BankManagementDao{
 
         return bankAccount;
 
+    }
+
+    @Override
+    public String depositMoneyCustomerAccount(int userCustomerAccountNumber,int depositAmount) throws BankAccountException {
+        String message="Wrong Account Number";
+
+        try (Connection connection=new DBUtil().provideConnection()) {
+
+            PreparedStatement preparedStatement=connection.prepareStatement("update BankManagementSystem set customerAccountBalance=customerAccountBalance+? where customerAccountNumber=?;");
+            preparedStatement.setInt(1,depositAmount);
+            preparedStatement.setInt(2,userCustomerAccountNumber);
+
+            if (preparedStatement.executeUpdate()>0){
+                message="Rs : "+depositAmount+" , deposited. account number : "+userCustomerAccountNumber+" .";
+            }
+
+        }catch (SQLException sqlException){
+            throw new BankAccountException(sqlException.getMessage());
+        }
+
+        return message;
+    }
+
+    @Override
+    public String withdrawMoneyCustomerAccount(int userCustomerAccountNumber, int withdrawAmount) throws BankAccountException {
+        String message="Wrong Account Number or Closed";
+
+        try (Connection connection=new DBUtil().provideConnection()) {
+
+            PreparedStatement preparedStatement=connection.prepareStatement("update BankManagementSystem set customerAccountBalance=customerAccountBalance-? where customerAccountNumber=?;");
+            preparedStatement.setInt(1,withdrawAmount);
+            preparedStatement.setInt(2,userCustomerAccountNumber);
+
+            if (preparedStatement.executeUpdate()>0){
+                message="Rs : "+withdrawAmount+" , withdraw from account number : "+userCustomerAccountNumber +" .";
+            }
+
+        }catch (SQLException sqlException){
+            throw new BankAccountException(sqlException.getMessage());
+        }
+
+        return message;
+    }
+
+    @Override
+    public String checkCurrentBalance(int userCustomerAccountNumber) throws BankAccountException {
+        String message="Wrong Account Number";
+
+        try (Connection connection=new DBUtil().provideConnection()) {
+
+            PreparedStatement preparedStatement=connection.prepareStatement("select customerAccountBalance from BankManagementSystem where customerAccountNumber=? ;");
+            preparedStatement.setInt(1,userCustomerAccountNumber);
+            ResultSet resultSet=preparedStatement.executeQuery();
+
+            if(resultSet.next()){
+
+                message="Current balance is :"+resultSet.getInt("customerAccountBalance");
+
+            }else
+                throw new BankAccountException("Doesn't Exit Customer Or Wrong Customer Account Number : "+userCustomerAccountNumber+" .");
+
+        }catch (SQLException sqlException){
+            throw new BankAccountException(sqlException.getMessage());
+        }
+
+        return message;
+    }
+
+    @Override
+    public String closeAccount(int userCustomerAccountNumber) throws BankAccountException {
+        String message="Wrong Account Number or Already closed";
+
+        try (Connection connection=new DBUtil().provideConnection()) {
+
+            PreparedStatement preparedStatement=connection.prepareStatement("delete from BankManagementSystem where customerAccountNumber=?;");
+            preparedStatement.setInt(1,userCustomerAccountNumber);
+
+            if (preparedStatement.executeUpdate()>0){
+                message="Account Closed "+userCustomerAccountNumber+" .";
+            }
+
+        }catch (SQLException sqlException){
+            throw new BankAccountException(sqlException.getMessage());
+        }
+
+        return message;
     }
 }
