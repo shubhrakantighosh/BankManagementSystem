@@ -6,16 +6,16 @@ import com.masai.exceptions.BankAccountException;
 
 import java.util.Scanner;
 
-public class GetCustomerInformationByCustomerID {
+public class GetCustomerInformationByCustomerAccountNumber {
     public static void main(String[] args) {
 
         try {
 
             Scanner scanner=new Scanner(System.in);
-            System.out.println("Enter Your Customer ID : ");
-            int userCustomerID=scanner.nextInt();
+            System.out.println("Enter Your Customer Account Number : ");
+            int userCustomerAccountNumber=scanner.nextInt();
 
-            BankAccount bankAccount=new BankManagementDaoImpl().getAccountInformationByCustomerID(userCustomerID);
+            BankAccount bankAccount=new BankManagementDaoImpl().getAccountInformationByCustomerAccountNumber(userCustomerAccountNumber);
 
             System.out.println(bankAccount);
 

@@ -19,7 +19,7 @@ public class BankManagementDaoImpl implements BankManagementDao{
 
             PreparedStatement preparedStatement =connection.prepareStatement("insert into Bankmanagementsystem values(?,?,?,?,?,?,?,?,?,?);");
 
-            preparedStatement.setInt(1,bankAccount.getCustomerID());
+            preparedStatement.setInt(1,bankAccount.getCustomerAccountNumber());
             preparedStatement.setString(2,bankAccount.getCustomerName());
             preparedStatement.setInt(3,bankAccount.getCustomerAccountBalance());
             preparedStatement.setString(4,bankAccount.getCustomerAddress());
@@ -39,20 +39,20 @@ public class BankManagementDaoImpl implements BankManagementDao{
 
         return message;
     }
-
     @Override
-    public BankAccount getAccountInformationByCustomerID(int userCustomerID) throws BankAccountException {
+    public BankAccount getAccountInformationByCustomerAccountNumber(int userCustomerAccountNumber) throws BankAccountException {
+
         BankAccount bankAccount=null;
 
         try (Connection connection=new DBUtil().provideConnection()) {
 
-            PreparedStatement preparedStatement=connection.prepareStatement("select * from BankManagementSystem where customerID=? ;");
-            preparedStatement.setInt(1,userCustomerID);
+            PreparedStatement preparedStatement=connection.prepareStatement("select * from BankManagementSystem where customerAccountNumber=? ;");
+            preparedStatement.setInt(1,userCustomerAccountNumber);
             ResultSet resultSet=preparedStatement.executeQuery();
 
             if(resultSet.next()){
 
-                int customerID=resultSet.getInt("customerID");
+                int customerAccountNumber=resultSet.getInt("customerAccountNumber");
                 String customerName=resultSet.getString("customerName");
                 int customerAccountBalance=resultSet.getInt("customerAccountBalance");
                 String customerAddress=resultSet.getString("customerAddress");
@@ -63,15 +63,16 @@ public class BankManagementDaoImpl implements BankManagementDao{
                 String branchifscCode=resultSet.getString("branchifscCode");
                 String branchName=resultSet.getString("branchName");
 
-                bankAccount=new BankAccount(customerID,customerName,customerAccountBalance,customerAddress,customerMobileNumber,customerEmailID,customerDebitCardNo,customerATMPin,branchifscCode,branchName);
+                bankAccount=new BankAccount(customerAccountNumber,customerName,customerAccountBalance,customerAddress,customerMobileNumber,customerEmailID,customerDebitCardNo,customerATMPin,branchifscCode,branchName);
 
             }else
-                throw new BankAccountException("Doesn't Exit Customer Or Wrong Customer ID : "+userCustomerID);
+                throw new BankAccountException("Doesn't Exit Customer Or Wrong Customer Account Number : "+userCustomerAccountNumber);
 
         }catch (SQLException sqlException){
             throw new BankAccountException(sqlException.getMessage());
         }
 
         return bankAccount;
+
     }
 }

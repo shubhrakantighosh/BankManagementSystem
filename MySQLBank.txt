@@ -1,5 +1,5 @@
 Create Table BankManagementSystem( 
-customerID int(6) Primary Key, 
+customerAccountNumber int(8) Primary Key, 
 customerName varchar(30) Not Null,
 customerAccountBalance int(8) Not Null,
 customerAddress varchar(30) Not Null,
@@ -11,7 +11,7 @@ branchifscCode varchar(6) Not Null,
 branchName varchar(10) Not Null  
 );
 
-( 1 ) customerID 
+( 1 ) customerAccountNumber
 ( 2 ) customerName 
 ( 3 ) customerAccountBalance
 ( 4 ) customerAddress 

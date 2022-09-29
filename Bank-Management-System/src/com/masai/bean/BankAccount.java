@@ -2,7 +2,7 @@ package com.masai.bean;
 
 public class BankAccount {
 
-    private int customerID;
+    private int customerAccountNumber;
     private String customerName ;
     private int customerAccountBalance;
     private String customerAddress ;
@@ -14,12 +14,12 @@ public class BankAccount {
     private String branchName;
 
 
-    public int getCustomerID() {
-        return customerID;
+    public int getCustomerAccountNumber() {
+        return customerAccountNumber;
     }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
+    public void setCustomerAccountNumber(int customerAccountNumber) {
+        this.customerAccountNumber = customerAccountNumber;
     }
 
     public String getCustomerName() {
@@ -94,8 +94,8 @@ public class BankAccount {
         this.branchName = branchName;
     }
 
-    public BankAccount(int customerID, String customerName, int customerAccountBalance, String customerAddress, String customerMobileNumber, String customerEmailID, String customerDebitCardNo, int customerATMPin, String branchifscCode, String branchName) {
-        this.customerID = customerID;
+    public BankAccount(int customerAccountNumber, String customerName, int customerAccountBalance, String customerAddress, String customerMobileNumber, String customerEmailID, String customerDebitCardNo, int customerATMPin, String branchifscCode, String branchName) {
+        this.customerAccountNumber = customerAccountNumber;
         this.customerName = customerName;
         this.customerAccountBalance = customerAccountBalance;
         this.customerAddress = customerAddress;
@@ -110,7 +110,7 @@ public class BankAccount {
     @Override
     public String toString() {
         return "BankAccount{" +
-                "customerID=" + customerID +
+                "customerAccountNumber=" + customerAccountNumber +
                 ", customerName='" + customerName + '\'' +
                 ", customerAccountBalance=" + customerAccountBalance +
                 ", customerAddress='" + customerAddress + '\'' +

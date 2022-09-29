@@ -12,8 +12,8 @@ public class CreateBankAccount {
         try {
 
             Scanner scanner=new Scanner(System.in);
-            System.out.println("Enter Your Customer ID : ");
-            int customerID=scanner.nextInt();
+            System.out.println("Enter Your Customer Account Number : ");
+            int customerAccountNumber=scanner.nextInt();
             System.out.println("Enter Your Customer Name  : ");
             scanner.next();
             String customerName=scanner.nextLine();
@@ -34,7 +34,7 @@ public class CreateBankAccount {
             System.out.println("Enter Branch Name : ");
             String branchName=scanner.next();
 
-            BankAccount bankAccount=new BankAccount(customerID,customerName,customerAccountBalance,customerAddress,customerMobileNumber,customerEmailID,customerDebitCardNo,customerATMPin,branchifscCode,branchName);
+            BankAccount bankAccount=new BankAccount(customerAccountNumber,customerName,customerAccountBalance,customerAddress,customerMobileNumber,customerEmailID,customerDebitCardNo,customerATMPin,branchifscCode,branchName);
 
             String message=new BankManagementDaoImpl().createBankAccount(bankAccount);
 
