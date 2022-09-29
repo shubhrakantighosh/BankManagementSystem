@@ -6,7 +6,7 @@ import com.masai.exceptions.BankAccountException;
 import java.util.Scanner;
 
 public class CurrentBalance {
-    public static void main(String[] args) {
+    public void customerCurrentBalance(){
 
         try {
 

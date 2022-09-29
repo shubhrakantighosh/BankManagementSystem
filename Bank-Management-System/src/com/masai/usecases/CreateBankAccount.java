@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class CreateBankAccount {
-    public static void main(String[] args) {
+    public void customerCreateBankAccount () {
 
         try {
 

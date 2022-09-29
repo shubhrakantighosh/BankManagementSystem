@@ -10,6 +10,7 @@ public interface BankManagementDao {
     public BankAccount getAccountInformation(int userCustomerAccountNumber) throws BankAccountException;
     public String depositMoneyCustomerAccount(int userCustomerAccountNumber,int depositAmount) throws BankAccountException;
     public String withdrawMoneyCustomerAccount(int userCustomerAccountNumber,int withdrawAmount) throws BankAccountException;
+    public String withdrawMonetByATM(String userDebitCard, int userATMPin, int withdrawAmount) throws BankAccountException;
     public String checkCurrentBalance(int userCustomerAccountNumber) throws BankAccountException;
     public String closeAccount(int userCustomerAccountNumber) throws BankAccountException;
 }

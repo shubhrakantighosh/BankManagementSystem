@@ -5,8 +5,8 @@ import com.masai.exceptions.BankAccountException;
 
 import java.util.Scanner;
 
-public class WithdrawMoney {
-    public static void main(String[] args) {
+public class WithdrawMoneyByAccountNumber {
+    public void customerWithdrawMoney(){
         try {
 
             Scanner scanner=new Scanner(System.in);

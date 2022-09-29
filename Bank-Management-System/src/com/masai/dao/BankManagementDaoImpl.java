@@ -119,6 +119,30 @@ public class BankManagementDaoImpl implements BankManagementDao{
     }
 
     @Override
+    public String withdrawMonetByATM(String userDebitCard, int userATMPin, int withdrawAmount) throws BankAccountException {
+
+        String message="Wrong ATM Pin or Not Readable";
+
+        try (Connection connection=new DBUtil().provideConnection()) {
+
+            PreparedStatement preparedStatement=connection.prepareStatement("update BankManagementSystem set customerAccountBalance=customerAccountBalance-? where  customerDebitCardNo=? && customerATMPin=?;");
+            preparedStatement.setInt(1,withdrawAmount);
+            preparedStatement.setString(2,userDebitCard);
+            preparedStatement.setInt(3,userATMPin);
+
+            if (preparedStatement.executeUpdate()>0){
+                message="Rs : "+withdrawAmount+" , withdraw from Debit Card : "+userDebitCard+" .";
+            }
+
+        }catch (SQLException sqlException){
+            throw new BankAccountException(sqlException.getMessage());
+        }
+
+        return message;
+
+    }
+
+    @Override
     public String checkCurrentBalance(int userCustomerAccountNumber) throws BankAccountException {
         String message="Wrong Account Number";
 

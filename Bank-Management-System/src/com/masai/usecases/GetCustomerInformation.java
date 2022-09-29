@@ -7,7 +7,7 @@ import com.masai.exceptions.BankAccountException;
 import java.util.Scanner;
 
 public class GetCustomerInformation {
-    public static void main(String[] args) {
+    public void customerGetCustomerInformation() {
 
         try {
 
